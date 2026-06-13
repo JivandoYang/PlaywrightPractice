@@ -1,7 +1,7 @@
 import {test as base} from "@playwright/test";
-import LoginPage from "../web/pages/LoginPage.spec";
-import RegisterPage from "../web/pages/RegisterPage.spec";
-import HomePage from "../web/pages/HomePage.spec";
+import LoginPage from "../web/pages/LoginPage";
+import RegisterPage from "../web/pages/RegisterPage";
+import HomePage from "../web/pages/HomePage";
 
 
 const baseURL:string = "https://automationexercise.com/login";
