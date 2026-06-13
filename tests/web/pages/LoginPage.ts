@@ -17,9 +17,7 @@ export default class LoginPage {
         this.loginBtn = page.getByRole('button',{name: 'Login'});
         this.emailField = page.locator('[data-qa="login-email"]');
         this.passwordField = page.getByPlaceholder('Password');
-        this.warningInvalid = page.locator('p', {
-    hasText: 'Your email or password is incorrect!'
-});
+        this.warningInvalid = page.locator('p', { hasText: 'Your email or password is incorrect!' });
     }
 
     async fillLoginForm(data: LoginData){

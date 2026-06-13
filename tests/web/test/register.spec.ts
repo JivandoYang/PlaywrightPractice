@@ -3,8 +3,7 @@ import {test, expect} from "../../fixtures/base";
 const randomEmail = `test${Date.now()}@gmail.com`;
 
 test.describe('register', () => {
-    test('valid register', async ({ registerPage, homePage, page }) => {
-        await page.goto("https://automationexercise.com")
+    test('valid register', async ({ registerPage, homePage }) => {
         await homePage.clickSignup();
         await registerPage.fillRegisterForm({
             username: 'test123',
@@ -34,3 +33,13 @@ test.describe('register', () => {
         await registerPage.clickContinue();
     });
 });
+
+test('register with existing email', async ({ registerPage, homePage }) => {
+    await homePage.clickSignup();
+    await registerPage.fillRegisterForm({
+            username: 'test123',
+            email: "LoginTest@gmail.com"
+    });
+    await expect(registerPage.warningText).toBeVisible();
+})
+

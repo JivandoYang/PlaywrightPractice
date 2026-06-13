@@ -54,6 +54,7 @@ export default class RegisterPage {
     readonly successfulText: Locator;
     readonly createBtn: Locator;
     readonly continueBtn: Locator;
+    readonly warningText: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -79,6 +80,7 @@ export default class RegisterPage {
         this.successfulText = page.locator('[data-qa="account-created"]')
         this.createBtn = page.getByRole('button',{name: "Create Account"})
         this.continueBtn = page.locator('[data-qa="continue-button"]');
+        this.warningText =page.locator('p', {hasText: "Email Address already exist!"})
     }
 
     async fillRegisterForm(data: RegisterData) {
@@ -120,3 +122,4 @@ export default class RegisterPage {
         await this.continueBtn.click();
     }
 }
+

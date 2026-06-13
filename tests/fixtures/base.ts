@@ -2,25 +2,30 @@ import {test as base} from "@playwright/test";
 import LoginPage from "../web/pages/LoginPage";
 import RegisterPage from "../web/pages/RegisterPage";
 import HomePage from "../web/pages/HomePage";
+import ContactPage from "../web/pages/ContactPage";
 
-
-const baseURL:string = "https://automationexercise.com/login";
+const baseURL:string = "https://automationexercise.com";
 
 type WebFixtures = {
     loginPage: LoginPage;
     registerPage: RegisterPage;
     homePage: HomePage;
+    contactPage: ContactPage;
 }
 
 export const test = base.extend<WebFixtures>({
+    homePage: async({page}, use) => {
+        await page.goto(baseURL)
+        await use(new HomePage(page));
+    },
     loginPage: async({page}, use) => {
         await use(new LoginPage(page));
     },
     registerPage: async({page}, use) => {
         await use(new RegisterPage(page));
     },
-    homePage: async({page}, use) => {
-        await use(new HomePage(page));
+    contactPage: async({page}, use) => {
+        await use(new ContactPage(page));
     },
 })
 
