@@ -6,6 +6,8 @@ export default class HomePage {
     readonly logoutIcon: Locator;
     readonly LoggedInAs: Locator;
     readonly ContactUsIcon: Locator;
+    readonly TestCaseIcon: Locator;
+    readonly ProductIcon: Locator
 
     constructor(page: Page) {
         this.page = page;
@@ -13,6 +15,8 @@ export default class HomePage {
         this.logoutIcon = page.getByRole('link',{name:" Logout"});
         this.LoggedInAs = page.getByText(/Logged in as/i);
         this.ContactUsIcon = page.getByRole('link',{name:" Contact us"})
+        this.TestCaseIcon = page.getByRole('link', { name: ' Test Cases' });
+        this.ProductIcon =  page.getByRole('link', { name: ' Products' });
     }
 
     async clickSignup(){
@@ -25,5 +29,13 @@ export default class HomePage {
 
     async clickContactIcon(){
         await this.ContactUsIcon.click();
+    }
+
+    async clickTestCaseIcon(){
+        await this.TestCaseIcon.click();
+    }
+
+    async clickProductIcon(){
+        await this.ProductIcon.click();
     }
 }
