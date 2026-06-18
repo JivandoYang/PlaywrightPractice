@@ -28,7 +28,7 @@ export default class ContactPage {
         this.messageField = page.getByPlaceholder('Your Message Here')
         this.submitBtn = page.locator('[data-qa="submit-button"]');
         this.fileField = page.locator('input[type="file"]');
-        this.successText = page.locator('div.contact-form .status.alert.alert-success');
+        this.successText = page.locator('div.contact-form .alert.alert-success.status');
         this.homeBtn = page.locator('div.contact-form .btn.btn-success')
     }
 
