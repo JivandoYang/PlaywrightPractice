@@ -5,7 +5,7 @@ import HomePage from "../web/pages/HomePage";
 import ContactPage from "../web/pages/ContactPage";
 import ProductPage from "../web/pages/ProductPage";
 import ProductDetailsPage from "../web/pages/ProductDetailsPage";
-
+import CartPage from "../web/pages/CartPage";
 const baseURL:string = "https://automationexercise.com";
 
 type WebFixtures = {
@@ -15,6 +15,7 @@ type WebFixtures = {
     contactPage: ContactPage;
     ProductPage: ProductPage;
     ProductDetailsPage: ProductDetailsPage;
+    cartPage: CartPage;
 }
 
 export const test = base.extend<WebFixtures>({
@@ -36,6 +37,9 @@ export const test = base.extend<WebFixtures>({
     },
     ProductDetailsPage: async({page}, use) => {
         await use(new ProductDetailsPage(page));
+    },
+    cartPage: async({page}, use) => {
+        await use(new CartPage(page));
     },
 })
 

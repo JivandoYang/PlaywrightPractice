@@ -8,6 +8,7 @@ export default class HomePage {
     readonly ContactUsIcon: Locator;
     readonly TestCaseIcon: Locator;
     readonly ProductIcon: Locator
+    readonly CartIcon: Locator
 
     constructor(page: Page) {
         this.page = page;
@@ -17,6 +18,7 @@ export default class HomePage {
         this.ContactUsIcon = page.getByRole('link',{name:" Contact us"})
         this.TestCaseIcon = page.getByRole('link', { name: ' Test Cases' });
         this.ProductIcon =  page.getByRole('link', { name: ' Products' });
+        this.CartIcon =  page.getByRole('link', { name: ' Cart' })
     }
 
     async clickSignup(){
@@ -37,5 +39,9 @@ export default class HomePage {
 
     async clickProductIcon(){
         await this.ProductIcon.click();
+    }
+
+    async clickCartIcon(){
+        await this.CartIcon.click();
     }
 }

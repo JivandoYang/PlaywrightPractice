@@ -53,7 +53,6 @@ test.describe('create booking', () => {
             additionalneeds: "Breakfast"
         }
         });
-        console.log(await response.text());
         expect(response.ok()).toBeFalsy();
     });
 });
@@ -98,7 +97,6 @@ test.describe('update booking', () => {
             additionalneeds: "Breakfast"
         }
         });
-        console.log(await response.text());
         expect(response.ok()).toBeFalsy();
     });
 
@@ -119,7 +117,6 @@ test.describe('update booking', () => {
             additionalneeds: "Breakfast"
         }
         });
-        console.log(await response.text());
         expect(response.ok()).toBeFalsy();
     });
 });
@@ -150,12 +147,10 @@ test.describe('delete booking', () => {
 
         expect(response.ok()).toBeTruthy();
         expect(response.status()).toBe(201);
-        console.log(await response.text());
     });
 
     test('without token', async ({ request }) => {
         const response = await request.delete(`${ENV.API_BASE_URL}/booking/1263`);
-        console.log(await response.text());
         expect(response.ok()).toBeFalsy();
     })
 
@@ -165,7 +160,6 @@ test.describe('delete booking', () => {
                 Cookie: `token=${token}`
             }
         });
-        console.log(await response.text());
         expect(response.ok()).toBeFalsy();
     })
 });

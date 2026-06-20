@@ -35,7 +35,6 @@ test('missing password', async ({ request }) => {
     })
     expect(response.ok()).toBeFalsy;
     const body = await response.json();
-    console.log(body);
 })
 
 test('wrong password or username', async ({ request }) => {
@@ -47,5 +46,4 @@ test('wrong password or username', async ({ request }) => {
     })
     expect(response.ok()).toBeFalsy;
     const body = await response.json();
-    console.log(body);
 })
