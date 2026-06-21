@@ -9,10 +9,12 @@ interface CartProduct {
 export default class CartPage {
     readonly page: Page;
     readonly cartRows: Locator;
+    readonly quantityInput: Locator;
 
     constructor(page: Page) {
         this.page = page;
         this.cartRows = page.locator('tr[id^="product-"]');
+        this.quantityInput = page.locator('#quantity');
     }
 
     async verifyProduct(index: number, expected: CartProduct) {
@@ -26,5 +28,9 @@ export default class CartPage {
         expect(price).toBe(expected.price);
         expect(quantity).toBe(expected.quantity);
         expect(total).toBe(expected.price * expected.quantity);
+    }
+
+    async setQuantity(quantity: number) {
+        await this.quantityInput.fill(quantity.toString());
     }
 }

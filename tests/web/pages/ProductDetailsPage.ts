@@ -8,6 +8,9 @@ export default class ProductDetailsPage {
     readonly availabity: Locator;
     readonly condition: Locator;
     readonly brand: Locator;
+    readonly inputQuantity: Locator;
+    readonly addCartBtn: Locator;
+    readonly viewCartBtn: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -17,6 +20,22 @@ export default class ProductDetailsPage {
         this.availabity = page.getByText('Availability:');
         this.condition = page.getByText('Condition:');
         this.brand = page.getByText('Brand:');
+        this.inputQuantity = page.locator('input#quantity');
+        this.addCartBtn = page.getByRole('button',{name: " Add to cart"});
+        this.viewCartBtn = page.getByRole('link', {name: /View Cart/i});
+    }
+
+    async setQuantity(quantity: number) {
+        await this.inputQuantity.fill(quantity.toString());
+    }
+
+    async addToCart(){
+        await this.addCartBtn.click();
+    }
+
+    async clickViewCart() {
+        await expect(this.viewCartBtn).toBeVisible();
+        await this.viewCartBtn.click();
     }
 
     async verifyProductDetails() {
