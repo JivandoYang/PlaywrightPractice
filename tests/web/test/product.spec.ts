@@ -42,3 +42,17 @@ test('Adding item quantity in cart to 4', async ({ ProductPage, homePage, cartPa
         quantity: 4
     });
 })
+
+test('removing item from cart', async ({ ProductPage, homePage, cartPage, ProductDetailsPage }) => {
+    await homePage.clickProductIcon();
+    await ProductPage.verifyPageLoaded();
+    await ProductPage.verifyProductsVisible();
+    await ProductPage.addProductToCart(0);
+    await homePage.clickCartIcon();
+    await cartPage.verifyProduct(0, {
+        name: 'Blue Top',
+        price: 500,
+        quantity: 1
+    });
+    
+})

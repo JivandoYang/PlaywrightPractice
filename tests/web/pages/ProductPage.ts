@@ -53,4 +53,15 @@ export default class ProductPage {
         await card.locator('.overlay-content .add-to-cart').click();
         await this.continueShoppingBtn.click();
     }
+
+    async checkCategory(option: 'Women' | 'Men' | 'Kids', subCategory: string) {
+        await this.page.getByRole('link', { name: ` ${option}` }).click();
+        await this.page.getByRole('link', { name: subCategory }).click();
+        await expect(this.page.getByRole('heading', { name: `${option} - ${subCategory} Products` })).toBeVisible();
+    }
+
+    async checkBrand(brandName: string) {
+        await this.page.getByRole('link', { name: brandName }).click();
+        await expect(this.page.getByRole('heading', {name: `Brand - ${brandName} Products`})).toBeVisible();
+    }
 }
