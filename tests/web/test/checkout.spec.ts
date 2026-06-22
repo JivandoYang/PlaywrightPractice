@@ -21,7 +21,7 @@ test('valid checkout', async ({ ProductPage, homePage, cartPage, loginPage, chec
     await paymentPage.ValidateSuccessfulPayment();
 })
 
-test.only('checkout without login', async ({ ProductPage, homePage, cartPage, loginPage, checkoutPage, paymentPage }) => {
+test('checkout without login', async ({ ProductPage, homePage, cartPage, loginPage, checkoutPage, paymentPage }) => {
     await homePage.clickSignup();
     await homePage.clickProductIcon();
     await ProductPage.addProductToCart(0);
