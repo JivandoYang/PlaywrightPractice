@@ -21,7 +21,7 @@ test('valid checkout', async ({ ProductPage, homePage, cartPage, loginPage, chec
     await paymentPage.ValidateSuccessfulPayment();
 })
 
-test('checkout without login', async ({ ProductPage, homePage, cartPage, loginPage, checkoutPage, paymentPage }) => {
+test.only('checkout without login', async ({ ProductPage, homePage, cartPage, loginPage, checkoutPage, paymentPage }) => {
     await homePage.clickSignup();
     await homePage.clickProductIcon();
     await ProductPage.addProductToCart(0);
@@ -31,6 +31,7 @@ test('checkout without login', async ({ ProductPage, homePage, cartPage, loginPa
         price: 500,
         quantity: 1
     });
+    await cartPage.clickCheckoutBtn();
     await cartPage.validateLoginAndRegister();
 })
 
